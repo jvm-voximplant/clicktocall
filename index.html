@@ -149,23 +149,24 @@
     <footer class="py-12 border-t border-slate-200 text-center">
         <p class="text-slate-400 text-sm">© 2026 Voximplant Inc. All rights reserved.</p>
     </footer>
+<!-- insert_script -->
+  <script>window.VoxKitWidgetSettings = {
+    host: 'kit-im-us.voximplant.com',
+    channel_uuid: '5b9d75b0-cc00-4024-a78a-0f46a92d6f73',
+    token: 'cbcd01e8cc739d57975aaa7830ce38b2',
+    client_data: {
+      client_id: '', // Customer ID
+      client_phone: '', // Customer phone number
+      client_avatar: ''  , // Customer avatar link
+      client_display_name: '',  // Customer name
+      client_email: '', // Customer email
+      client_language: 'en' // Interface language: 'en' or 'ru'
+  }
+  };
+  </script>
 
-    <!-- VoxKit Chat Widget -->
-    <script>window.VoxKitWidgetSettings = {
-        host: 'kit-im-us.voximplant.com',
-        channel_uuid: '0c4b12d2-92c8-4010-8e18-2bc2be9ff920',
-        token: '888fbdec24cb5a16c6a584456d5ccff1',
-        client_data: {
-            client_id: '',
-            client_phone: '',
-            client_avatar: '',
-            client_display_name: '',
-            client_email: '',
-            client_language: 'en'
-        }
-    };
-    </script>
-    <script>var l=function(){var t=function(){"object"==typeof VoxKitWidget&&"object"==typeof VoxKitWidgetSettings&&VoxKitWidget.init(VoxKitWidgetSettings)},e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://kit.voximplant.com/static/widgets/web-chat.js?"+(new Date).valueOf(),e.readyState?e.onreadystatechange=function(){"loaded"!==e.readyState&&"complete"!==e.readyState||(e.onreadystatechange=null,t())}:e.onload=function(){t()};var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(e,a)};window.attachEvent?window.attachEvent("onload",l):window.addEventListener("load",l,!1);</script>
+  <script>var l=function(){var t=function(){"object"==typeof VoxKitWidget&&"object"==typeof VoxKitWidgetSettings&&VoxKitWidget.init(VoxKitWidgetSettings)},e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://kit.voximplant.com/static/widgets/web-chat.js?"+(new Date).valueOf(),e.readyState?e.onreadystatechange=function(){"loaded"!==e.readyState&&"complete"!==e.readyState||(e.onreadystatechange=null,t())}:e.onload=function(){t()};var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(e,a)};window.attachEvent?window.attachEvent("onload",l):window.addEventListener("load",l,!1);
+  </script>
 
     <!-- Click To Call Logic -->
     <script src="click-to-call.js"></script>
