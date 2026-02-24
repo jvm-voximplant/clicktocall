@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voximplant | Modern Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/voximplant-websdk@4.11.1-2965"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#662eff',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+
+        /* Click To Call Button */
+        #ctc-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #16a34a;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            box-shadow: 0 0 0 0 rgba(22,163,74,0.5);
+        }
+        #ctc-btn:hover { opacity: 0.92; transform: scale(1.03); }
+        #ctc-btn.calling {
+            background: #dc2626;
+            animation: pulse-ring 1.4s ease-out infinite;
+        }
+        #ctc-btn.connecting { background: #d97706; cursor: not-allowed; }
+        #ctc-btn:disabled { cursor: not-allowed; opacity: 0.7; }
+
+        @keyframes pulse-ring {
+            0%   { box-shadow: 0 0 0 0 rgba(220,38,38,0.5); }
+            70%  { box-shadow: 0 0 0 10px rgba(220,38,38,0); }
+            100% { box-shadow: 0 0 0 0 rgba(220,38,38,0); }
+        }
+
+        /* Phone icon SVG inline */
+        .phone-icon { width: 18px; height: 18px; flex-shrink: 0; }
+
+        /* Status toast */
+        #ctc-toast {
+            display: none;
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            background: #1e293b;
+            color: #f8fafc;
+            padding: 14px 20px;
+            border-radius: 14px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            min-width: 240px;
+            max-width: 320px;
+            transition: opacity 0.3s;
+        }
+        #ctc-toast.show { display: flex; align-items: center; gap: 10px; }
+        #ctc-toast .toast-dot {
+            width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+        }
+        #ctc-toast.status-connecting .toast-dot { background: #f59e0b; }
+        #ctc-toast.status-calling    .toast-dot { background: #22c55e; animation: blink 1s infinite; }
+        #ctc-toast.status-ended      .toast-dot { background: #94a3b8; }
+        #ctc-toast.status-error      .toast-dot { background: #ef4444; }
+
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
+        <div class="text-2xl font-bold tracking-tight text-brand">Voximplant</div>
+        <div class="hidden md:flex space-x-8 font-medium text-slate-600">
+            <a href="#" class="hover:text-brand transition">Product</a>
+            <a href="#" class="hover:text-brand transition">Features</a>
+            <a href="#" class="hover:text-brand transition">Pricing</a>
+        </div>
+        <div class="flex items-center gap-3">
+            <!-- Click To Call Button -->
+            <button id="ctc-btn" onclick="clickToCall()">
+                <svg class="phone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 0 0 .01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+                </svg>
+                <span id="ctc-label">Click To Call</span>
+            </button>
+            <a href="#" class="bg-brand text-white px-5 py-2 rounded-full font-semibold hover:opacity-90 transition">Get Started</a>
+        </div>
+    </nav>
+
+    <header class="max-w-7xl mx-auto px-8 py-20 lg:py-32 grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+            <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+                Build Like a Pro With <span class="text-brand">Intelligent Cloud Communications.</span>
+            </h1>
+            <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+               Create and scale better communications with fast and flexible solutions that adapt to your business needs
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <button class="bg-brand text-white px-8 py-4 rounded-xl font-bold hover:opacity-90 transition shadow-lg shadow-purple-200">Start Free Trial</button>
+                <button class="bg-white border border-slate-200 px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition">Watch Demo</button>
+            </div>
+        </div>
+        <div class="bg-purple-50 rounded-3xl h-64 lg:h-96 flex items-center justify-center border-2 border-purple-100 shadow-inner">
+            <span class="text-brand opacity-40 font-mono"><img src="https://voximplant.com/_nuxt/img/59e51d7.png" alt="header-image" width="1200px" height="608px" class="header-image"></span>
+        </div>
+    </header>
+
+    <section class="bg-white py-24">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <h2 class="text-3xl font-bold mb-16">Why teams choose Voximplant</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="p-8 rounded-2xl bg-slate-50 hover:shadow-md transition border-t-4 border-brand">
+                    <div class="w-12 h-12 bg-brand rounded-lg mb-6 mx-auto opacity-90"></div>
+                    <h3 class="text-xl font-bold mb-3">Lightning Fast</h3>
+                    <p class="text-slate-600">Built for speed and performance. No lag, just pure productivity.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-slate-50 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-brand rounded-lg mb-6 mx-auto opacity-70"></div>
+                    <h3 class="text-xl font-bold mb-3">Secure by Default</h3>
+                    <p class="text-slate-600">Enterprise-grade security to keep your sensitive data protected.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-slate-50 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-brand rounded-lg mb-6 mx-auto opacity-50"></div>
+                    <h3 class="text-xl font-bold mb-3">AI Powered</h3>
+                    <p class="text-slate-600">Smart automation that learns from your behavior and saves hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-200 text-center">
+        <p class="text-slate-400 text-sm">© 2026 Voximplant Inc. All rights reserved.</p>
+    </footer>
+
+    <!-- VoxKit Chat Widget -->
+    <script>window.VoxKitWidgetSettings = {
+        host: 'kit-im-us.voximplant.com',
+        channel_uuid: '0c4b12d2-92c8-4010-8e18-2bc2be9ff920',
+        token: '888fbdec24cb5a16c6a584456d5ccff1',
+        client_data: {
+            client_id: '',
+            client_phone: '',
+            client_avatar: '',
+            client_display_name: '',
+            client_email: '',
+            client_language: 'en'
+        }
+    };
+    </script>
+    <script>var l=function(){var t=function(){"object"==typeof VoxKitWidget&&"object"==typeof VoxKitWidgetSettings&&VoxKitWidget.init(VoxKitWidgetSettings)},e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://kit.voximplant.com/static/widgets/web-chat.js?"+(new Date).valueOf(),e.readyState?e.onreadystatechange=function(){"loaded"!==e.readyState&&"complete"!==e.readyState||(e.onreadystatechange=null,t())}:e.onload=function(){t()};var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(e,a)};window.attachEvent?window.attachEvent("onload",l):window.addEventListener("load",l,!1);</script>
+
+    <!-- Click To Call Logic -->
+    <script src="click-to-call.js"></script>
+
+    <!-- Status Toast -->
+    <div id="ctc-toast">
+        <div class="toast-dot"></div>
+        <span id="ctc-toast-msg">Connecting...</span>
+    </div>
+
+</body>
+</html>
