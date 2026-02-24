@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voximplant | Modern Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: '#662eff',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="flex items-center justify-between px-8 py-6 max-w-7xl mx-auto">
+        <div class="text-2xl font-bold tracking-tight text-brand">Voximplant</div>
+        <div class="hidden md:flex space-x-8 font-medium text-slate-600">
+            <a href="#" class="hover:text-brand transition">Product</a>
+            <a href="#" class="hover:text-brand transition">Features</a>
+            <a href="#" class="hover:text-brand transition">Pricing</a>
+        </div>
+        <a href="#" class="bg-brand text-white px-5 py-2 rounded-full font-semibold hover:opacity-90 transition">Get Started</a>
+    </nav>
+
+    <header class="max-w-7xl mx-auto px-8 py-20 lg:py-32 grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+            <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+                Build Like a Pro With <span class="text-brand">Intelligent Cloud Communications.</span>
+            </h1>
+            <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+               Create and scale better communications with fast and flexible solutions that adapt to your business needs
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <button class="bg-brand text-white px-8 py-4 rounded-xl font-bold hover:opacity-90 transition shadow-lg shadow-purple-200">Start Free Trial</button>
+                <button class="bg-white border border-slate-200 px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition">Watch Demo</button>
+            </div>
+        </div>
+        <div class="bg-purple-50 rounded-3xl h-64 lg:h-96 flex items-center justify-center border-2 border-purple-100 shadow-inner">
+            <span class="text-brand opacity-40 font-mono"><img data-v-cc5d328a="" src="https://voximplant.com/_nuxt/img/59e51d7.png" alt="header-image" width="1200px" height="608px" class="header-image"></span>
+        </div>
+    </header>
+
+    <section class="bg-white py-24">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <h2 class="text-3xl font-bold mb-16">Why teams choose Voximplant</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="p-8 rounded-2xl bg-slate-50 hover:shadow-md transition border-t-4 border-brand">
+                    <div class="w-12 h-12 bg-brand rounded-lg mb-6 mx-auto opacity-90"></div>
+                    <h3 class="text-xl font-bold mb-3">Lightning Fast</h3>
+                    <p class="text-slate-600">Built for speed and performance. No lag, just pure productivity.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-slate-50 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-brand rounded-lg mb-6 mx-auto opacity-70"></div>
+                    <h3 class="text-xl font-bold mb-3">Secure by Default</h3>
+                    <p class="text-slate-600">Enterprise-grade security to keep your sensitive data protected.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-slate-50 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-brand rounded-lg mb-6 mx-auto opacity-50"></div>
+                    <h3 class="text-xl font-bold mb-3">AI Powered</h3>
+                    <p class="text-slate-600">Smart automation that learns from your behavior and saves hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-200 text-center">
+        <p class="text-slate-400 text-sm">© 2026 Voximplant Inc. All rights reserved.</p>
+    </footer>
+
+    
+ 
+  <!-- insert_script -->
+  <script>window.VoxKitWidgetSettings = {
+    host: 'kit-im-us.voximplant.com',
+    channel_uuid: '5b9d75b0-cc00-4024-a78a-0f46a92d6f73',
+    token: 'cbcd01e8cc739d57975aaa7830ce38b2',
+    client_data: {
+      client_id: '', // Customer ID
+      client_phone: '', // Customer phone number
+      client_avatar: ''  , // Customer avatar link
+      client_display_name: '',  // Customer name
+      client_email: '', // Customer email
+      client_language: 'en' // Interface language: 'en' or 'ru'
+  }
+  };
+  </script>
+
+  <script>var l=function(){var t=function(){"object"==typeof VoxKitWidget&&"object"==typeof VoxKitWidgetSettings&&VoxKitWidget.init(VoxKitWidgetSettings)},e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://kit.voximplant.com/static/widgets/web-chat.js?"+(new Date).valueOf(),e.readyState?e.onreadystatechange=function(){"loaded"!==e.readyState&&"complete"!==e.readyState||(e.onreadystatechange=null,t())}:e.onload=function(){t()};var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(e,a)};window.attachEvent?window.attachEvent("onload",l):window.addEventListener("load",l,!1);
+  </script>
+
+</body>
+</html>
